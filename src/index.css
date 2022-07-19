@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#root {
+  height: 93.5%;
+  /* I'm very sorry for this, but overflow:hidden is much worse */
+}
+
+
+@layer utilities{
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-[10px];
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-300;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    @apply bg-gray-500;
+  
+    @apply rounded-lg;
+    border: 2px solid transparent;
+  }
+}
