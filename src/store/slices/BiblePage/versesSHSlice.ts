@@ -3,13 +3,15 @@ import { ISOWRKSlice } from "../..";
 import { IRSearchVerse } from "../../../models";
 
 interface ISOWRKFlippableSlice extends ISOWRKSlice<IRSearchVerse> {
-  history: IRSearchVerse[]
+  history: IRSearchVerse[],
+  historyShown: boolean
 }
 
 const initialState: ISOWRKFlippableSlice = {
   list: [],
   active: null,
   history: [],
+  historyShown: true
 }
 
 export const versesSHSlice = createSlice({
@@ -18,6 +20,7 @@ export const versesSHSlice = createSlice({
   reducers: {
     setVerses(state, action: PayloadAction<IRSearchVerse[]>) {
       state.list = action.payload
+      state.historyShown = false
     },
     setActiveVerse(state, action: PayloadAction<IRSearchVerse>) {
       state.active = action.payload
@@ -26,7 +29,16 @@ export const versesSHSlice = createSlice({
       state.history.unshift(action.payload)
     },
     flipToHistory(state, action: PayloadAction<undefined>) {
+      state.historyShown = true
       state.list = state.history
+    },
+    removeFromHisory(state, action: PayloadAction<IRSearchVerse>) {
+      state.history = state.history.filter(
+        verse => verse.reactKey !== action.payload.reactKey
+      )
+      state.list = state.list.filter(
+        verse => verse.reactKey !== action.payload.reactKey
+      )
     }
   }
 })

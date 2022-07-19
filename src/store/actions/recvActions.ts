@@ -1,5 +1,5 @@
 import { AppDispatch } from "..";
-import { IShownCouplet, IShownVerse } from "../../models/recvModels";
+import { IShownCouplet, IShownVerse } from "../../models/recv";
 import { recvSlice } from "../slices/recvSlice";
 
 export const setShownVerse = (verse: IShownVerse | null) => {

@@ -1,5 +1,5 @@
 import { IBook, IChapter, ICouplet, ISearchVerse, ISong, IVerse } from "../models"
-import {IShownCouplet, IShownVerse} from '../models/recvModels' 
+import {IShownCouplet, IShownVerse} from '../models/recv' 
 import { store } from "../store"
 import { setBooks } from "../store/actions/booksActions"
 import { setChapters } from "../store/actions/chaptersActions"

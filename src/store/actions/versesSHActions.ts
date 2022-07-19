@@ -36,3 +36,9 @@ export const flipToHistory = () => {
     dispatch(versesSHSlice.actions.flipToHistory())
   }
 }
+
+export const removeFromHistory = (verse: IRSearchVerse) => {
+  return async (dispatch: AppDispatch) => {
+    dispatch(versesSHSlice.actions.removeFromHisory(verse))
+  }
+}

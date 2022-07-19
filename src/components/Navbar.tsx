@@ -11,7 +11,7 @@ const Navbar = () => {
     items-center bg-gray-500 text-white'
     >
       <h1
-        className='ml-4 mr-4'
+        className='ml-4 mr-4 font-bold text-xl'
       >
         2 MBC Stream Control Studio
       </h1>

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import {IShownVerse, IShownCouplet} from '../../models/recvModels'
+import {IShownVerse, IShownCouplet} from '../../models/recv'
 
 interface RecvState {
   couplet: IShownCouplet | null,
