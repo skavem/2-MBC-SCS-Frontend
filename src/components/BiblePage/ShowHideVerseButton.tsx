@@ -1,5 +1,7 @@
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid'
 import React from 'react'
+
+import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid'
+
 import { useAppSelector } from '../../hooks/redux'
 import { WSSingletone } from '../../websocket/wsSingletone'
 
@@ -19,7 +21,8 @@ const ShowHideVerseButton = ({ className = '' }: { className?: string }) => {
     <div className={className}>
       <button
         className='flex items-center bg-gray-500 
-        text-white rounded-lg px-4 py-2'
+        text-white rounded-lg px-4 py-2 
+        hover:bg-gray-700 transition-colors'
         onClick={onButtonClick}
       >
         {!isShown ?

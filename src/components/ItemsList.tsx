@@ -39,7 +39,7 @@ const ItemsList = (
     <div
       ref={list}
       className={
-        'border-2 rounded-lg border-gray-400 '
+        'border-2 rounded-lg border-gray-400 py-1 '
         + 'overflow-y-scroll custom-scrollbar select-none '
         + className
       }

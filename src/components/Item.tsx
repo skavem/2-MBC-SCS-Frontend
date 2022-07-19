@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EyeIcon, XIcon } from '@heroicons/react/solid'
+import { EyeIcon } from '@heroicons/react/solid'
 
 import { ISObjectWRKey } from '../models'
 import { IItemRightButton } from '../models/ui'
@@ -39,17 +39,19 @@ const Item = ({
       }
     >
       {isShown(item) &&
-        <EyeIcon className='h-5 mr-1 inline-flex items-baseline' />
+        <EyeIcon className='h-5 mr-2 inline-flex items-baseline' />
       }
-      {item.mark &&
-        <span
-          className='bg-teal-100 text-black 
-                rounded px-2 mr-1 font-medium'
-        >
-          {item.mark}
-        </span>
-      }
-      <span>{item.fullName}</span>
+      <div>
+        {item.mark &&
+          <span
+            className='bg-teal-100 text-black
+                  rounded px-2 mr-2 font-medium'
+          >
+            {item.mark}
+          </span>
+        }
+        <span>{item.fullName}</span>
+      </div>
       {rightButtons?.map(button =>
       (<ItemRightButton
         name={button.name}
