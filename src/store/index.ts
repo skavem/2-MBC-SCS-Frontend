@@ -4,6 +4,8 @@ import chaptersReducer from './slices/BiblePage/chaptersSlice';
 import recvReducer from './slices/recvSlice';
 import versesSHReducer from './slices/BiblePage/versesSHSlice';
 import versesReducer from './slices/BiblePage/versesSlice';
+import webSocketReducer from './slices/webSocketSlice';
+import settingsReducer from './slices/settingsSlice';
 
 export interface ISOWRKSlice<T> {
   list: T[]
@@ -24,7 +26,9 @@ export const store = configureStore({
     [storeReducersEnum.verses]: versesReducer,
     [storeReducersEnum.versesSH]: versesSHReducer,
 
-    recv: recvReducer
+    recv: recvReducer,
+    websocket: webSocketReducer,
+    settings: settingsReducer
   },
 })
 

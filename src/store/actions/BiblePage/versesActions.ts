@@ -1,8 +1,8 @@
 import {v4 as uuidv4} from 'uuid'
 
-import { AppDispatch } from "..";
-import { IVerse, IRVerse } from "../../models";
-import { versesSlice } from '../slices/BiblePage/versesSlice';
+import { AppDispatch } from "../..";
+import { IVerse, IRVerse } from "../../../models";
+import { versesSlice } from '../../slices/BiblePage/versesSlice';
 
 const keysMap = new Map()
 

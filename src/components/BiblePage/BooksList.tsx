@@ -3,7 +3,7 @@ import { useAppDispatch } from '../../hooks/redux'
 import useStoreItems from '../../hooks/useStoreItems'
 import { IRBook, ISObjectWRKey } from '../../models'
 import { storeReducersEnum } from '../../store'
-import { setActiveBook } from '../../store/actions/booksActions'
+import { setActiveBook } from '../../store/actions/BiblePage/booksActions'
 import ItemsList from '../ItemsList'
 
 const BooksList = ({ className }: { className: string }) => {

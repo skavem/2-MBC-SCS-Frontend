@@ -5,11 +5,11 @@ import useStoreItems from '../../hooks/useStoreItems'
 import { store, storeReducersEnum } from '../../store'
 import ItemsList from '../ItemsList'
 import { useAppDispatch } from '../../hooks/redux'
-import { setActiveBook } from '../../store/actions/booksActions'
-import { setActiveChapter } from '../../store/actions/chaptersActions'
-import { setActiveVerse } from '../../store/actions/versesActions'
+import { setActiveBook } from '../../store/actions/BiblePage/booksActions'
+import { setActiveChapter } from '../../store/actions/BiblePage/chaptersActions'
+import { setActiveVerse } from '../../store/actions/BiblePage/versesActions'
 import { XIcon } from '@heroicons/react/solid'
-import { removeFromHistory } from '../../store/actions/versesSHActions'
+import { removeFromHistory } from '../../store/actions/BiblePage/versesSHActions'
 
 const VersesSHList = ({ className = '' }: { className?: string }) => {
   const items = useStoreItems(storeReducersEnum.versesSH)

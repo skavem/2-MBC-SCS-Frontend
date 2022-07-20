@@ -1,11 +1,12 @@
 import { IBook, IChapter, ICouplet, ISearchVerse, ISong, IVerse } from "../models"
 import {IShownCouplet, IShownVerse} from '../models/recv' 
 import { store } from "../store"
-import { setBooks } from "../store/actions/booksActions"
-import { setChapters } from "../store/actions/chaptersActions"
+import { setBooks } from "../store/actions/BiblePage/booksActions"
+import { setChapters } from "../store/actions/BiblePage/chaptersActions"
 import { setShownVerse } from "../store/actions/recvActions"
-import { setVerses } from "../store/actions/versesActions"
-import { setSHVerses } from "../store/actions/versesSHActions"
+import { setVerses } from "../store/actions/BiblePage/versesActions"
+import { setSHVerses } from "../store/actions/BiblePage/versesSHActions"
+import { changeWebsocketState } from "../store/actions/webSocketActions"
 
 export enum pTypeEnum {
   get = 'get',
@@ -34,6 +35,13 @@ export enum pObjEnum {
   auth = 'auth',
   reciever = 'reciever',
   error = 'error'
+}
+
+export enum WebSocketReadyState {
+  CONNECTING,
+  OPEN,
+  CLOSING,
+  CLOSED
 }
 
 interface IParcel {
@@ -355,7 +363,7 @@ export class WSWrapper implements IWSWrapper {
 
 
   onopen = () => {
-    // store.dispatch(changeConnected(true))
+    store.dispatch(changeWebsocketState(WebSocketReadyState.OPEN))
     console.log('[WS]: connection established')
     let authObject = { type: pTypeEnum.transmitter, object: pObjEnum.auth, data: '' }
     this.sendParcel(authObject)
@@ -364,13 +372,14 @@ export class WSWrapper implements IWSWrapper {
   }
 
   onclose = () => {
-    // store.dispatch(changeConnected(false))
+    store.dispatch(changeWebsocketState(WebSocketReadyState.CLOSED))
     setTimeout(this.establishConnection, 2000)
   }
 
   establishConnection = (ip: string | null = null, port: string | null = null) => {
     this._ip = ip !== null ? ip : this._ip
     this._port = port !== null ? port : this._port
+    store.dispatch(changeWebsocketState(WebSocketReadyState.CONNECTING))
     if (this._socket !== undefined) {
       this._socket.onclose = null
       this._socket.close()

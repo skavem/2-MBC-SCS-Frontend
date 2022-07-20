@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
-import { AppDispatch } from "..";
-import { IBook, IChapter, IRSearchVerse, IRVerse, ISearchVerse } from "../../models";
-import { versesSHSlice } from "../slices/BiblePage/versesSHSlice";
+import { AppDispatch } from "../..";
+import { IBook, IChapter, IRSearchVerse, IRVerse, ISearchVerse } from "../../../models";
+import { versesSHSlice } from "../../slices/BiblePage/versesSHSlice";
 
 export const setSHVerses = (verses: ISearchVerse[]) => {
   return async (dispatch: AppDispatch) => {

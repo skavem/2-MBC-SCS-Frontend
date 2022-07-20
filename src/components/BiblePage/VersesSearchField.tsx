@@ -3,7 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import { useAppDispatch } from '../../hooks/redux'
 import { useDebounce } from '../../hooks/useDebounce'
 import { useInput } from '../../hooks/useInput'
-import { flipToHistory } from '../../store/actions/versesSHActions'
+import { flipToHistory } from '../../store/actions/BiblePage/versesSHActions'
 import { WSSingletone } from '../../websocket/wsSingletone'
 
 const SearchField = ({ className = '' }: { className?: string }) => {

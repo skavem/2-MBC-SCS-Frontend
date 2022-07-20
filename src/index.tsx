@@ -6,11 +6,12 @@ import './index.css'
 import { store } from './store'
 import App from './App'
 import { WSSingletone } from './websocket/wsSingletone'
+import { WSIPDefault, WSPortDefault } from './variables/websocket'
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
 
-const ws = WSSingletone.create('192.168.1.100', '8765')
+const ws = WSSingletone.create(WSIPDefault, WSPortDefault)
 
 root.render(
   <React.StrictMode>

@@ -3,7 +3,7 @@ import { useAppDispatch } from '../../hooks/redux'
 import useStoreItems from '../../hooks/useStoreItems'
 import { IRChapter, ISObjectWRKey } from '../../models'
 import { storeReducersEnum } from '../../store'
-import { setActiveChapter } from '../../store/actions/chaptersActions'
+import { setActiveChapter } from '../../store/actions/BiblePage/chaptersActions'
 import ItemsList from '../ItemsList'
 
 const ChaptersList = ({ className }: { className: string }) => {

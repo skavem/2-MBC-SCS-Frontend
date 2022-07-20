@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import appPages from '../variables/pages'
+import { useAppDispatch } from '../../hooks/redux'
+import { settingsSlice } from '../../store/slices/settingsSlice'
+import appPages from '../../variables/pages'
+import SettingsButton from './SettingsButton'
+import SettingsModal from './SettingsModal'
 
 const Navbar = () => {
   const curLoc = useLocation()
+  const dispatch = useAppDispatch()
 
   return (
     <nav
@@ -13,7 +18,7 @@ const Navbar = () => {
       <h1
         className='ml-4 mr-4 font-bold text-xl'
       >
-        2 MBC Stream Control Studio
+        SC Studio
       </h1>
       <div className="flex grow justify-center">
         {appPages.map(page => (
@@ -23,7 +28,8 @@ const Navbar = () => {
             className={
               'flex p-3 m-1 transition-colors rounded-lg '
               + 'border-transparent border-2 '
-              + (curLoc.pathname === page.path ?
+              + ((curLoc.pathname === page.path) ||
+                (page.default && (curLoc.pathname === '/')) ?
                 'border-white bg-gray-600' :
                 'hover:border-white hover:bg-gray-600')
             }
@@ -32,6 +38,10 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
+      <SettingsButton
+        onClick={() => dispatch(settingsSlice.actions.setModalShown(true))}
+      />
+      <SettingsModal />
     </nav>
   )
 }

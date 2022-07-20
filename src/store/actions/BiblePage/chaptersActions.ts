@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { AppDispatch } from "..";
-import { IChapter, IRChapter } from "../../models";
-import { WSSingletone } from '../../websocket/wsSingletone';
-import { chaptersSlice } from '../slices/BiblePage/chaptersSlice';
+import { AppDispatch } from "../..";
+import { IChapter, IRChapter } from "../../../models";
+import { WSSingletone } from '../../../websocket/wsSingletone';
+import { chaptersSlice } from '../../slices/BiblePage/chaptersSlice';
 
 const keysMap = new Map()
 

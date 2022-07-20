@@ -1,9 +1,9 @@
 import {v4 as uuidv4} from 'uuid'
 
-import { AppDispatch } from "..";
-import { IBook, IRBook } from "../../models";
-import { WSSingletone } from '../../websocket/wsSingletone';
-import { booksSlice } from "../slices/BiblePage/booksSlice";
+import { AppDispatch } from "../..";
+import { IBook, IRBook } from "../../../models";
+import { WSSingletone } from '../../../websocket/wsSingletone';
+import { booksSlice } from "../../slices/BiblePage/booksSlice";
 
 export const setBooks = (books: IBook[]) => {
   return async (dispatch: AppDispatch) => {
