@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ISOWRKSlice } from "../..";
-import { IRSong } from "../../../models";
+import { IRFavSong, IRSong } from "../../../models";
 
-const initialState: ISOWRKSlice<IRSong> = {
+const initialState: ISOWRKSlice<IRFavSong> = {
   list: [],
   active: null
 }
@@ -11,15 +11,15 @@ export const songFavsSlice = createSlice({
   name: 'songFavs',
   initialState,
   reducers: {
-    setSongFavs(state, action: PayloadAction<IRSong[]>) {
-      state.list = action.payload
+    addSongFav(state, action: PayloadAction<IRFavSong>) {
+      state.list.unshift(action.payload)
     },
-    setActiveSongFav(state, action: PayloadAction<IRSong>) {
+    setActiveSongFav(state, action: PayloadAction<IRFavSong>) {
       state.active = action.payload
     },
-    removeSongFav(state, action: PayloadAction<IRSong>) {
+    removeSongFav(state, action: PayloadAction<IRFavSong>) {
       state.list = state.list.filter(
-        song => song.reactKey === action.payload.reactKey
+        song => song.reactKey !== action.payload.reactKey
       )
     }
   }

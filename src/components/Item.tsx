@@ -56,7 +56,12 @@ const Item = ({
       (<ItemRightButton
         name={button.name}
         onClick={() => button.onClick(item)}
-        className={button.className}
+        className={
+          `${button.className} ${isActive ?
+            button.activeClassName :
+            button.nonActiveClassName
+          }`
+        }
         key={`${item.reactKey}-${button.name as string}`}
       >
         {button.children}

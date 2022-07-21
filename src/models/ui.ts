@@ -5,4 +5,6 @@ export interface IItemRightButton {
   onClick: (item: ISObjectWRKey) => void
   children?: JSX.Element
   name: string
+  activeClassName?: string
+  nonActiveClassName?: string
 }

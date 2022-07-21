@@ -2,6 +2,7 @@ import React from 'react'
 import SearchField from '../components/SearchField'
 import CoupletsList from '../components/SongsPage/CoupletsList'
 import ShowHideCoupletButton from '../components/SongsPage/ShowHideCoupletButton'
+import SongFavsList from '../components/SongsPage/SongFavsList'
 import SongsList from '../components/SongsPage/SongsList'
 import { WSSingletone } from '../websocket/wsSingletone'
 
@@ -23,6 +24,7 @@ const SongsPage = () => {
           className='w-full h-1/2 mb-2'
         />
         <ShowHideCoupletButton className='flex justify-center mb-2'/>
+        <SongFavsList className='min-h-0 grow'/>
       </div>
     </div>
   )

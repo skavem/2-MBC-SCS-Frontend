@@ -62,6 +62,10 @@ export interface IRSong extends ISObjectWRKey  {
   mark: number
 }
 
+export interface IRFavSong extends IRSong {
+  originKey: string
+}
+
 export interface ICouplet extends ISObject {
   id: number
   mark: string

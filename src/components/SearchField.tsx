@@ -35,18 +35,18 @@ const SearchField = (
       />
 
       <button
-        className="border-2 border-gray-400 rounded-lg h-[42px] px-4
+        className="border-2 border-gray-400 rounded-lg h-[42px] px-1 
         hover:bg-gray-500 hover:border-gray-500 hover:text-white 
-        transition-colors rounded-l-none rounded-r-none border-r-0"
+        transition-colors rounded-l-none rounded-r-none border-r-0 lg:px-4"
         onClick={() => { setValue('') }}
       >
         <XIcon className='h-5' />
       </button>
 
       <button
-        className="border-2 border-gray-400 rounded-lg h-[42px] px-4
+        className="border-2 border-gray-400 rounded-lg h-[42px] px-1 
         hover:bg-gray-500 hover:border-gray-500 hover:text-white 
-        transition-colors rounded-l-none"
+        transition-colors rounded-l-none lg:px-4"
         onClick={searchVerse}
       >
         <SearchIcon className='h-5' />
