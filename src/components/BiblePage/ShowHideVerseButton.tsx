@@ -1,34 +1,34 @@
 import React from 'react'
 
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/solid'
-
-import { useAppSelector } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { addToHistory } from '../../store/actions/BiblePage/versesSHActions'
 import { WSSingletone } from '../../websocket/wsSingletone'
+import ShowHideButton from '../ShowHideButton'
 
 const ShowHideVerseButton = ({ className = '' }: { className?: string }) => {
   const isShown = useAppSelector(state => state.recv.verse) !== null
-  const activeVerse = useAppSelector(state => state.verses.active)
 
-  const onButtonClick = () => {
+  const dispatch = useAppDispatch()
+
+  const activeVerse = useAppSelector(state => state.verses.active)
+  const activeBook = useAppSelector(state => state.books.active)
+  const activeChapter = useAppSelector(state => state.chapters.active)
+
+  const onClick = () => {
     if (isShown) {
       WSSingletone.get().hideVerse()
     } else {
       WSSingletone.get().showVerse(activeVerse!)
+      dispatch(addToHistory(activeVerse!, activeBook!, activeChapter!))
     }
   }
 
   return (
-    <div className={className}>
-      <button
-        className='flex items-center bg-gray-500 
-        text-white rounded-lg px-4 py-2 
-        hover:bg-gray-700 transition-colors'
-        onClick={onButtonClick}
-      >
-        {!isShown ?
-          <><EyeIcon className='h-5 mr-2' />Показать</> :
-          <><EyeOffIcon className='h-5 mr-2' />Спрятать</>}
-      </button>
+  <div className={'flex items-center justify-center '+className}>
+    <ShowHideButton
+    isShown={isShown}
+    onButtonClick={onClick}
+    />
     </div>
   )
 }

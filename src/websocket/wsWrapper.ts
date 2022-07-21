@@ -1,12 +1,14 @@
 import { IBook, IChapter, ICouplet, ISearchVerse, ISong, IVerse } from "../models"
-import {IShownCouplet, IShownVerse} from '../models/recv' 
+import { IShownCouplet, IShownVerse } from '../models/recv'
 import { store } from "../store"
 import { setBooks } from "../store/actions/BiblePage/booksActions"
 import { setChapters } from "../store/actions/BiblePage/chaptersActions"
-import { setShownVerse } from "../store/actions/recvActions"
+import { setShownCouplet, setShownVerse } from "../store/actions/recvActions"
 import { setVerses } from "../store/actions/BiblePage/versesActions"
 import { setSHVerses } from "../store/actions/BiblePage/versesSHActions"
 import { changeWebsocketState } from "../store/actions/webSocketActions"
+import { setSearchedSong, setSongs } from "../store/actions/SongsPage/songsActions"
+import { setCouplets } from "../store/actions/SongsPage/coupletsActions"
 
 export enum pTypeEnum {
   get = 'get',
@@ -51,7 +53,7 @@ interface IParcel {
 }
 
 interface IAuthParcel {
-  couplet?: {couplet: IShownCouplet},
+  couplet?: { couplet: IShownCouplet },
   verse?: IShownVerse
 }
 
@@ -105,7 +107,7 @@ enum SearchHandlersEnum {
 
 interface ISearchHandlers {
   [SearchHandlersEnum.verse]: (data: IAllAnswer<ISearchVerse>) => void
-  [SearchHandlersEnum.song]: (data: {found?: ISong}) => void
+  [SearchHandlersEnum.song]: (data: { found?: ISong }) => void
 }
 
 enum ShowHandlersEnum {
@@ -115,7 +117,7 @@ enum ShowHandlersEnum {
 
 interface IShowHandlers {
   [ShowHandlersEnum.verse]: (data: IShownVerse) => void
-  [ShowHandlersEnum.couplet]: (data: {couplet: IShownCouplet}) => void
+  [ShowHandlersEnum.couplet]: (data: { couplet: IShownCouplet }) => void
 }
 
 enum HideHandlersEnum {
@@ -135,8 +137,8 @@ export class WSWrapper implements IWSWrapper {
   private answerHandlers: IAnsHandlers
   private searchHandlers: ISearchHandlers
   private showHandlers: IShowHandlers
-  private hideHandlers: IHideHandlers 
-  
+  private hideHandlers: IHideHandlers
+
   constructor(ip: string, port: string) {
     this._ip = ip
     this._port = port
@@ -150,7 +152,7 @@ export class WSWrapper implements IWSWrapper {
     this.answerHandlers = {
       auth: (data) => {
         if (data.couplet !== undefined) {
-          // setShownCouplet(data.couplet.couplet)
+          store.dispatch(setShownCouplet(data.couplet.couplet))
         }
         if (data.verse !== undefined) {
           store.dispatch(setShownVerse(data.verse))
@@ -161,8 +163,8 @@ export class WSWrapper implements IWSWrapper {
       chapter: data => store.dispatch(setChapters(data.all)),
       verse: data => store.dispatch(setVerses(data.all)),
 
-      song: data => {}/*updateSongs(data.all)*/,
-      couplet: data => {}/*updateCouplets(data.all)*/
+      song: data => store.dispatch(setSongs(data.all)),
+      couplet: data => store.dispatch(setCouplets(data.all))
     }
 
     this.searchHandlers = {
@@ -170,7 +172,9 @@ export class WSWrapper implements IWSWrapper {
         store.dispatch(setSHVerses(data.all))
       },
       song: data => {
-        // setActiveSong(data?.found)
+        if (data.found) {
+          store.dispatch(setSearchedSong(data.found))
+        }
       }
     }
 
@@ -179,7 +183,7 @@ export class WSWrapper implements IWSWrapper {
         store.dispatch(setShownVerse(data))
       },
       couplet: data => {
-        // setShownCouplet(data.couplet)
+        store.dispatch(setShownCouplet(data.couplet))
       }
     }
 
@@ -188,7 +192,7 @@ export class WSWrapper implements IWSWrapper {
         store.dispatch(setShownVerse(null))
       },
       couplet: data => {
-        // setShownCouplet(null)
+        store.dispatch(setShownCouplet(null))
       }
     }
   }

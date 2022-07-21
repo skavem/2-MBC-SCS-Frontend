@@ -2,12 +2,12 @@ import React from 'react'
 import { storeReducersEnum } from '../store'
 import { useAppSelector } from './redux'
 
-const useStoreItems = (sliceName: string) => {
+const useStoreItems = (sliceName: storeReducersEnum) => {
   const items = useAppSelector(
-    state => state[sliceName as storeReducersEnum].list
+    state => state[sliceName].list
   )
   const activeItem = useAppSelector(
-    state => state[sliceName as storeReducersEnum].active
+    state => state[sliceName].active
   )
 
   return {items, activeItem}

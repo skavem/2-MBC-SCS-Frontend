@@ -6,6 +6,9 @@ import versesSHReducer from './slices/BiblePage/versesSHSlice';
 import versesReducer from './slices/BiblePage/versesSlice';
 import webSocketReducer from './slices/webSocketSlice';
 import settingsReducer from './slices/settingsSlice';
+import songsReducer from './slices/SongsPage/songsSlice';
+import coupletsReducer from './slices/SongsPage/coupletsSlice';
+import songFavsReducer from './slices/SongsPage/songFavsSlice';
 
 export interface ISOWRKSlice<T> {
   list: T[]
@@ -16,7 +19,11 @@ export enum storeReducersEnum {
   books = 'books',
   chapters = 'chapters',
   verses = 'verses',
-  versesSH = 'versesSH'
+  versesSH = 'versesSH',
+
+  songs = 'songs',
+  couplets = 'couplets',
+  songFavs = 'songFavs'
 }
 
 export const store = configureStore({
@@ -25,6 +32,11 @@ export const store = configureStore({
     [storeReducersEnum.chapters]: chaptersReducer,
     [storeReducersEnum.verses]: versesReducer,
     [storeReducersEnum.versesSH]: versesSHReducer,
+
+    [storeReducersEnum.songs]: songsReducer,
+    [storeReducersEnum.couplets]: coupletsReducer,
+    [storeReducersEnum.songFavs]: songFavsReducer,
+
 
     recv: recvReducer,
     websocket: webSocketReducer,

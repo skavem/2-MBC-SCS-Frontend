@@ -1,7 +1,7 @@
 import React from 'react'
 import BooksList from '../components/BiblePage/BooksList'
 import ChaptersList from '../components/BiblePage/ChaptersList'
-import SearchField from '../components/BiblePage/VersesSearchField'
+import VersesSearchField from '../components/BiblePage/VersesSearchField'
 import ShowHideVerseButton from '../components/BiblePage/ShowHideVerseButton'
 import VersesList from '../components/BiblePage/VersesList'
 import VersesSHList from '../components/BiblePage/VersesSHList'
@@ -15,8 +15,12 @@ const BiblePage = () => {
           <ChaptersList className='w-16 h-full mr-2' />
           <VersesList className='w-full h-full' />
         </div>
-        <ShowHideVerseButton className='flex items-center justify-center mb-2' />
-        <SearchField className='flex items-center justify-center w-full mb-2' />
+        <ShowHideVerseButton
+          className='flex items-center justify-center mb-2'
+        />
+        <VersesSearchField
+          className='w-full mb-2'
+        />
         <div className='flex w-full grow min-h-0'>
           <VersesSHList className='w-full h-full' />
         </div>
