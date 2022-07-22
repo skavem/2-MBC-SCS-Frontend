@@ -3,10 +3,11 @@ import React from 'react'
 import { EyeIcon } from '@heroicons/react/solid'
 
 import { ISObjectWRKey } from '../models'
-import { IItemRightButton } from '../models/ui'
-import ItemRightButton from './ItemRightButton'
+import { IItemButton } from '../models/ui'
+import ItemButton from './ItemButton'
 
 const Item = ({
+  className,
   item,
   isActive,
   onClick,
@@ -14,8 +15,10 @@ const Item = ({
   isShown = _ => false,
   forwardRef,
   children,
-  rightButtons
+  rightButtons,
+  bottomButtons,
 }: {
+  className?: string
   item: ISObjectWRKey
   isActive: boolean
   onClick: (item: ISObjectWRKey) => void
@@ -23,7 +26,8 @@ const Item = ({
   isShown?: (item: ISObjectWRKey) => boolean
   forwardRef: React.MutableRefObject<HTMLDivElement | null> | null
   children?: React.PropsWithChildren
-  rightButtons?: IItemRightButton[]
+  rightButtons?: IItemButton[]
+  bottomButtons?: IItemButton[]
 }) => {
   return (
     <div
@@ -31,11 +35,12 @@ const Item = ({
       onClick={() => onClick(item)}
       onDoubleClick={() => onDoubleClick(item)}
       className={
-        'py-1 px-3 cursor-pointer transition-colors '
-        + 'flex flex-row items-center group '
-        + (isActive ?
+        `relative py-1 px-3 cursor-pointer transition-all 
+        flex flex-row items-center group  
+        ${isActive ?
           'bg-gray-500 hover:bg-gray-600 text-white ' :
-          'hover:bg-gray-300 ')
+          'hover:bg-gray-300'} 
+        ${className}`
       }
     >
       {isShown(item) &&
@@ -52,21 +57,40 @@ const Item = ({
         }
         <span>{item.fullName}</span>
       </div>
-      {rightButtons?.map(button =>
-      (<ItemRightButton
-        name={button.name}
-        onClick={() => button.onClick(item)}
-        className={
-          `${button.className} ${isActive ?
-            button.activeClassName :
-            button.nonActiveClassName
-          }`
-        }
-        key={`${item.reactKey}-${button.name as string}`}
-      >
-        {button.children}
-      </ItemRightButton>)
-      )}
+      {
+        rightButtons?.map(button => (
+          <ItemButton
+            name={button.name}
+            onClick={() => button.onClick(item)}
+            className={
+              `${button.className} ${isActive ?
+                button.activeClassName :
+                button.nonActiveClassName
+              }`
+            }
+            key={`${item.reactKey}-${button.name as string}`}
+          >
+            {button.children}
+          </ItemButton>
+        ))
+      }
+      {
+        bottomButtons?.map(button => (
+          <ItemButton
+            name={button.name}
+            onClick={() => button.onClick(item)}
+            className={
+              `${button.className} ${isActive ?
+                button.activeClassName :
+                button.nonActiveClassName
+              }`
+            }
+            key={`${item.reactKey}-${button.name as string}`}
+          >
+            {button.children}
+          </ItemButton>
+        ))
+      }
     </div>
   )
 }

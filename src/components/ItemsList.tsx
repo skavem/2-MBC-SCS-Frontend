@@ -1,28 +1,35 @@
 import React, { useEffect, useRef } from 'react'
 
 import { ISObjectWRKey } from '../models'
-import { IItemRightButton } from '../models/ui'
+import { IItemButton, IListButton } from '../models/ui'
 import isScrollNeeded from '../utils/isScrollNeeded'
 import Item from './Item'
+import ItemButton from './ItemButton'
 
 const ItemsList = (
   {
     className,
+    itemClassName,
     items,
     activeItem,
     isItemShown = a => false,
     onItemClick,
     onDoubleItemClick = _ => { },
-    rightButtons
+    rightButtons,
+    bottomButtons,
+    listTopButton
   }:
     {
       className: string,
+      itemClassName?: string,
       items: ISObjectWRKey[],
       activeItem: ISObjectWRKey | null,
       isItemShown?: (item: ISObjectWRKey) => boolean,
       onItemClick: (item: ISObjectWRKey) => void,
       onDoubleItemClick?: (item: ISObjectWRKey) => void
-      rightButtons?: IItemRightButton[]
+      rightButtons?: IItemButton[]
+      bottomButtons?: IItemButton[]
+      listTopButton?: IListButton
     }
 ) => {
   const activeRef = useRef<HTMLDivElement | null>(null)
@@ -44,10 +51,20 @@ const ItemsList = (
         + className
       }
     >
+      {listTopButton &&
+        <ItemButton
+          className={listTopButton.className}
+          name={listTopButton.name}
+          onClick={listTopButton.onClick}
+        >
+          {listTopButton.children}
+        </ItemButton>
+      }
       {items?.map(item => {
         const isActive = item.reactKey === activeItem?.reactKey
         return (
           <Item
+            className={itemClassName}
             item={item}
             forwardRef={isActive ? activeRef : null}
             isActive={isActive}
@@ -56,6 +73,7 @@ const ItemsList = (
             onDoubleClick={onDoubleItemClick}
             key={item.reactKey}
             rightButtons={rightButtons}
+            bottomButtons={bottomButtons}
           />
         )
       })}

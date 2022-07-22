@@ -1,18 +1,18 @@
 import React from 'react'
 
-interface IItemRightButton {
+interface IItemButton {
   className?: string
   onClick: () => void
   children?: JSX.Element
   name: string
 }
 
-const ItemRightButton = ({
+const ItemButton = ({
   className,
   onClick,
   children,
   name
-}: IItemRightButton) => {
+}: IItemButton) => {
   return (
     <div
       onClick={e => {e.stopPropagation(); onClick()}}
@@ -23,4 +23,4 @@ const ItemRightButton = ({
   )
 }
 
-export default ItemRightButton
+export default ItemButton

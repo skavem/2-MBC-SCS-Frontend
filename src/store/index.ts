@@ -9,6 +9,7 @@ import settingsReducer from './slices/settingsSlice';
 import songsReducer from './slices/SongsPage/songsSlice';
 import coupletsReducer from './slices/SongsPage/coupletsSlice';
 import songFavsReducer from './slices/SongsPage/songFavsSlice';
+import coupletModalReducer from './slices/SongsPage/coupletModalSlice';
 
 export interface ISOWRKSlice<T> {
   list: T[]
@@ -23,7 +24,7 @@ export enum storeReducersEnum {
 
   songs = 'songs',
   couplets = 'couplets',
-  songFavs = 'songFavs'
+  songFavs = 'songFavs',
 }
 
 export const store = configureStore({
@@ -36,8 +37,8 @@ export const store = configureStore({
     [storeReducersEnum.songs]: songsReducer,
     [storeReducersEnum.couplets]: coupletsReducer,
     [storeReducersEnum.songFavs]: songFavsReducer,
-
-
+    
+    coupletModal: coupletModalReducer,
     recv: recvReducer,
     websocket: webSocketReducer,
     settings: settingsReducer

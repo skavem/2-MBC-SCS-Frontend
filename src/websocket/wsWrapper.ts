@@ -47,13 +47,20 @@ export enum WebSocketReadyState {
 }
 
 interface IParcel {
-  type: pTypeEnum,
-  object: pObjEnum,
+  type: pTypeEnum
+  object: pObjEnum
   data: any
 }
 
+export interface IInsertCouplet {
+  insert_after: number
+  song_id: number
+  mark: string
+  fullName: string
+}
+
 interface IAuthParcel {
-  couplet?: { couplet: IShownCouplet },
+  couplet?: { couplet: IShownCouplet }
   verse?: IShownVerse
 }
 
@@ -69,12 +76,12 @@ interface IWSWrapper {
 
   getSongs: () => void
   searchSong: (str: string) => void
-  createSong: (song: ISong) => void
+  createSong: (song: {mark: number, name: string}) => void
   getCouplets: (songId: number) => void
   showCouplet: (coupletId: number) => void
   hideCouplet: () => void
   editCouplet: (couplet: ICouplet) => void
-  insertCouplet: (couplet: ICouplet) => void
+  insertCouplet: (couplet: IInsertCouplet) => void
   deleteCouplet: (couplet_id: number, song_id: number) => void
 }
 
@@ -300,7 +307,7 @@ export class WSWrapper implements IWSWrapper {
     })
   }
 
-  createSong = (song: ISong) => {
+  createSong = (song: {mark: number, name: string}) => {
     this.sendParcel({
       type: pTypeEnum.create,
       object: pObjEnum.song,
@@ -344,7 +351,7 @@ export class WSWrapper implements IWSWrapper {
     })
   }
 
-  insertCouplet = (couplet: ICouplet) => {
+  insertCouplet = (couplet: IInsertCouplet) => {
     this.sendParcel({
       type: pTypeEnum.insert,
       object: pObjEnum.couplet,
@@ -354,13 +361,12 @@ export class WSWrapper implements IWSWrapper {
     })
   }
 
-  deleteCouplet = (couplet_id: number, song_id: number) => {
+  deleteCouplet = (couplet_id: number) => {
     this.sendParcel({
       type: pTypeEnum.delete,
       object: pObjEnum.couplet,
       data: {
-        couplet_id,
-        song_id
+        couplet_id
       }
     })
   }

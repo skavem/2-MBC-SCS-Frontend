@@ -17,7 +17,7 @@ const Modal = ({ onClose, name, shown, children, buttons }: IModal) => {
       ${shown ? 'opacity-100 visible ' : 'opacity-0 invisible '}`}
     >
       <div
-        className='w-1/2 max-w-[720px] max-h-[420px] 
+        className='w-1/2 max-w-[720px] max-h-[630px] 
       bg-white rounded-2xl flex flex-col text-gray-700'
       >
         <div
@@ -35,8 +35,8 @@ const Modal = ({ onClose, name, shown, children, buttons }: IModal) => {
         </div>
 
         <div
-          className="overflow-y-auto min-h-[100px] border-b-2 
-          border-gray-300 w-full"
+          className="p-4 items-center justify-center overflow-y-auto 
+          min-h-[100px] border-b-2 border-gray-300 w-full"
         >
           {children}
         </div>
