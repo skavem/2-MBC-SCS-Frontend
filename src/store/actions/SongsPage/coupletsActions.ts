@@ -19,3 +19,15 @@ export const setActiveCouplet = (couplet: IRCouplet) => {
     dispatch(coupletsSlice.actions.setActiveCouplet(couplet))
   }
 }
+
+export const setNextCoupletActive = () => {
+  return async (dispatch: AppDispatch) => {
+    dispatch(coupletsSlice.actions.setNextActive())
+  }
+}
+
+export const setPrevCoupletActive = () => {
+  return async (dispatch: AppDispatch) => {
+    dispatch(coupletsSlice.actions.setPrevActive())
+  }
+}

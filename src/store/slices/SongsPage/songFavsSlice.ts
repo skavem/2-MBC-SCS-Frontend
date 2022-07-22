@@ -1,9 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ISOWRKSlice } from "../..";
-import { IRFavSong, IRSong } from "../../../models";
+import { IRFavSong } from "../../../models";
+
+const storageName = 'FavouriteSongs'
+
+const initialList = window.localStorage.getItem(storageName) || '[]'
 
 const initialState: ISOWRKSlice<IRFavSong> = {
-  list: [],
+  list: JSON.parse(initialList),
   active: null
 }
 
@@ -13,6 +17,7 @@ export const songFavsSlice = createSlice({
   reducers: {
     addSongFav(state, action: PayloadAction<IRFavSong>) {
       state.list.unshift(action.payload)
+      window.localStorage.setItem(storageName, JSON.stringify(state.list))
     },
     setActiveSongFav(state, action: PayloadAction<IRFavSong>) {
       state.active = action.payload
@@ -21,6 +26,7 @@ export const songFavsSlice = createSlice({
       state.list = state.list.filter(
         song => song.reactKey !== action.payload.reactKey
       )
+      window.localStorage.setItem(storageName, JSON.stringify(state.list))
     }
   }
 })

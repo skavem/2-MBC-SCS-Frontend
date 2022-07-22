@@ -10,12 +10,15 @@ import { setActiveCouplet } from '../../store/actions/SongsPage/coupletsActions'
 import { WSSingletone } from '../../websocket/wsSingletone'
 import ItemsList from '../ItemsList'
 import { setCoupletModalEdit, setCoupletModalFullName, setCoupletModalInsertAfter, setCoupletModalMark, setCoupletModalShown } from '../../store/actions/SongsPage/coupletModalActions'
+import { useCoupletsHotkeys } from '../../hooks/useCoupletsHotkeys'
 
 const CoupletsList = ({ className }: { className: string }) => {
   const items = useStoreItems(storeReducersEnum.couplets)
   const shownCouplet = useAppSelector(state => state.recv.couplet)
 
   const dispatch = useAppDispatch()
+
+  useCoupletsHotkeys()
 
   return (
     <ItemsList

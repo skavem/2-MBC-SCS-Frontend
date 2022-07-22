@@ -1,5 +1,7 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useCallback, useEffect } from 'react'
+
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+
 import { useAppDispatch } from '../../hooks/redux'
 import { settingsSlice } from '../../store/slices/settingsSlice'
 import appPages from '../../variables/pages'
@@ -9,11 +11,33 @@ import SettingsModal from './SettingsModal'
 const Navbar = () => {
   const curLoc = useLocation()
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
+  const keyHandler = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Tab') {
+      e.preventDefault()
+      const curPageInd = appPages.findIndex(
+        page => page.path === curLoc.pathname
+      )
+      const nextPageInd = curPageInd + 1 < appPages.length ?
+        curPageInd + 1 :
+        0
+      navigate(appPages[nextPageInd].path)
+    }
+  }, [curLoc, navigate])
+
+  useEffect(() => {
+    document.addEventListener('keyup', keyHandler)
+
+    return () => {
+      document.removeEventListener('keyup', keyHandler)
+    }
+  }, [keyHandler])
 
   return (
     <nav
       className='flex row justify-center 
-    items-center bg-gray-500 text-white'
+      items-center bg-gray-500 text-white'
     >
       <h1
         className='ml-4 mr-4 font-bold text-xl'
