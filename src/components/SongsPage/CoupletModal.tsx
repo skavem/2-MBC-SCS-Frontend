@@ -1,6 +1,10 @@
 import React, { useCallback } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { clearCoupletModal, setCoupletModalFullName, setCoupletModalMark, setCoupletModalShown } from '../../store/actions/SongsPage/coupletModalActions'
+import { 
+  clearCoupletModal, 
+  setCoupletModalFullName, 
+  setCoupletModalMark 
+} from '../../store/actions/SongsPage/coupletModalActions'
 import { WSSingletone } from '../../websocket/wsSingletone'
 import Modal from '../Modal'
 

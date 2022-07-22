@@ -11,7 +11,7 @@ import { WSIPDefault, WSPortDefault } from './variables/websocket'
 const container = document.getElementById('root')!
 const root = createRoot(container)
 
-const ws = WSSingletone.create(WSIPDefault, WSPortDefault)
+WSSingletone.create(WSIPDefault, WSPortDefault)
 
 root.render(
   <React.StrictMode>
