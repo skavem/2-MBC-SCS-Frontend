@@ -39,7 +39,7 @@ export enum pObjEnum {
   error = 'error'
 }
 
-export enum WebSocketReadyState {
+export enum WebSocketState {
   CONNECTING,
   OPEN,
   CLOSING,
@@ -373,7 +373,7 @@ export class WSWrapper implements IWSWrapper {
 
 
   onopen = () => {
-    store.dispatch(changeWebsocketState(WebSocketReadyState.OPEN))
+    store.dispatch(changeWebsocketState(WebSocketState.OPEN))
     console.log('[WS]: connection established')
     let authObject = { type: pTypeEnum.transmitter, object: pObjEnum.auth, data: '' }
     this.sendParcel(authObject)
@@ -382,14 +382,14 @@ export class WSWrapper implements IWSWrapper {
   }
 
   onclose = () => {
-    store.dispatch(changeWebsocketState(WebSocketReadyState.CLOSED))
+    store.dispatch(changeWebsocketState(WebSocketState.CLOSED))
     setTimeout(this.establishConnection, 2000)
   }
 
   establishConnection = (ip: string | null = null, port: string | null = null) => {
     this._ip = ip !== null ? ip : this._ip
     this._port = port !== null ? port : this._port
-    store.dispatch(changeWebsocketState(WebSocketReadyState.CONNECTING))
+    store.dispatch(changeWebsocketState(WebSocketState.CONNECTING))
     if (this._socket !== undefined) {
       this._socket.onclose = null
       this._socket.close()

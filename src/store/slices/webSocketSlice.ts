@@ -1,19 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { WebSocketReadyState } from "../../websocket/wsWrapper";
+import { WebSocketState } from "../../websocket/wsWrapper";
 
 interface IWebSocketSlice {
-  state: WebSocketReadyState
+  state: WebSocketState
 }
 
 const initialState: IWebSocketSlice = {
-  state: WebSocketReadyState.CLOSED
+  state: WebSocketState.CLOSED
 }
 
 export const webSocketSlice = createSlice({
   name: 'websocket',
   initialState,
   reducers: {
-    changeState(state, action: PayloadAction<WebSocketReadyState>) {
+    changeState(state, action: PayloadAction<WebSocketState>) {
       state.state = action.payload
     }
   }
