@@ -4,15 +4,16 @@ import { SearchIcon, XIcon } from '@heroicons/react/solid'
 import { useInput } from '../hooks/useInput'
 import { useDebounce } from '../hooks/useDebounce'
 
+interface ISearchFieldProps {
+  className: string
+  onSearch: (data: string) => void 
+}
+
 const SearchField = (
   {
     className = '',
     onSearch
-  }:
-    {
-      className?: string,
-      onSearch: (data: string) => void
-    }
+  }: ISearchFieldProps
 ) => {
   const { input, setValue } = useInput()
   const debounced = useDebounce(input.value)

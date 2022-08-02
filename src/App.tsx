@@ -6,12 +6,12 @@ import { useAppSelector } from './hooks/redux'
 import BiblePage from './pages/BiblePage'
 import LoadingPage from './pages/LoadingPage'
 import SongsPage from './pages/SongsPage'
-import { WebSocketReadyState } from './websocket/wsWrapper'
+import { WebSocketState } from './websocket/wsWrapper'
 
 function App() {
   const isConnected = useAppSelector(
     state => state.websocket.state
-  ) === WebSocketReadyState.OPEN
+  ) === WebSocketState.OPEN
 
   return (
     <BrowserRouter>
