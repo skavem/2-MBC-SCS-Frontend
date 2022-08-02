@@ -83,7 +83,7 @@ const CoupletsList = ({ className }: { className: string }) => {
             dispatch(setCoupletModalShown(true))
           },
           className: `flex justify-center fixed absolute 
-          inset-x-0 bottom-0 -bottom-3 z-10`,
+          inset-x-0 bottom-0 -bottom-3 z-60`,
           children: (<PlusIcon
             className={`p-1 h-6 text-gray-500 rounded-full invisible 
             shadow-gray-500 shadow-md bg-white group-hover:visible
