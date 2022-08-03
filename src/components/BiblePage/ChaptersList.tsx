@@ -4,7 +4,7 @@ import useStoreItems from '../../hooks/useStoreItems'
 import { IRChapter, ISObjectWRKey } from '../../models'
 import { storeReducersEnum } from '../../store'
 import { setActiveChapter } from '../../store/actions/BiblePage/chaptersActions'
-import ItemsList from '../ItemsList'
+import ItemsList from '../item-list/ItemsList'
 
 const ChaptersList = ({ className }: { className: string }) => {
   const items = useStoreItems(storeReducersEnum.chapters)

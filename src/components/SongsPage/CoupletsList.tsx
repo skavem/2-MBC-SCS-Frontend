@@ -8,7 +8,7 @@ import { IRCouplet } from '../../models'
 import { storeReducersEnum } from '../../store'
 import { setActiveCouplet } from '../../store/actions/SongsPage/coupletsActions'
 import { WSSingletone } from '../../websocket/wsSingletone'
-import ItemsList from '../ItemsList'
+import ItemsList from '../item-list/ItemsList'
 import { setCoupletModalEdit, setCoupletModalFullName, setCoupletModalInsertAfter, setCoupletModalMark, setCoupletModalShown } from '../../store/actions/SongsPage/coupletModalActions'
 import { useCoupletsHotkeys } from '../../hooks/useCoupletsHotkeys'
 

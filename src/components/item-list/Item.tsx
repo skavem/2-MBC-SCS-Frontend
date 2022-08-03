@@ -2,8 +2,8 @@ import React from 'react'
 
 import { EyeIcon } from '@heroicons/react/solid'
 
-import { ISObjectWRKey } from '../models'
-import { IItemButton } from '../models/ui'
+import { ISObjectWRKey } from '../../models'
+import { IItemButton } from '../../models/ui'
 import ItemButton from './ItemButton'
 
 const Item = ({

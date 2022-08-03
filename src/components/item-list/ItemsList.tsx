@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 
-import { ISObjectWRKey } from '../models'
-import { IItemButton, IListButton } from '../models/ui'
-import isScrollNeeded from '../utils/isScrollNeeded'
+import { ISObjectWRKey } from '../../models'
+import { IItemButton, IListButton } from '../../models/ui'
+import isScrollNeeded from '../../utils/isScrollNeeded'
 import Item from './Item'
 import ItemButton from './ItemButton'
 

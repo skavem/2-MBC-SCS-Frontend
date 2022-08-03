@@ -7,7 +7,7 @@ import { store, storeReducersEnum } from '../../store'
 import { setActiveVerse } from '../../store/actions/BiblePage/versesActions'
 import { addToHistory } from '../../store/actions/BiblePage/versesSHActions'
 import { WSSingletone } from '../../websocket/wsSingletone'
-import ItemsList from '../ItemsList'
+import ItemsList from '../item-list/ItemsList'
 
 const VersesList = ({ className }: { className: string }) => {
   const verses = useStoreItems(storeReducersEnum.verses)

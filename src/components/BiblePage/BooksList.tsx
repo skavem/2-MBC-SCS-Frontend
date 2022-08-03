@@ -4,7 +4,7 @@ import useStoreItems from '../../hooks/useStoreItems'
 import { IRBook, ISObjectWRKey } from '../../models'
 import { storeReducersEnum } from '../../store'
 import { setActiveBook } from '../../store/actions/BiblePage/booksActions'
-import ItemsList from '../ItemsList'
+import ItemsList from '../item-list/ItemsList'
 
 const BooksList = ({ className }: { className: string }) => {
   const items = useStoreItems(storeReducersEnum.books)

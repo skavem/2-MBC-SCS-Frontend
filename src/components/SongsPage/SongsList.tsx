@@ -6,7 +6,7 @@ import { IRSong } from '../../models'
 import { storeReducersEnum } from '../../store'
 import { addSongFav } from '../../store/actions/SongsPage/songFavsActions'
 import { setActiveSong } from '../../store/actions/SongsPage/songsActions'
-import ItemsList from '../ItemsList'
+import ItemsList from '../item-list/ItemsList'
 
 const SongsList = ({ className = '' }: { className?: string }) => {
   const items = useStoreItems(storeReducersEnum.songs)

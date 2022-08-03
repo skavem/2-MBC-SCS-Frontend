@@ -9,6 +9,7 @@ import { setSHVerses } from "../store/actions/BiblePage/versesSHActions"
 import { changeWebsocketState } from "../store/actions/webSocketActions"
 import { setSearchedSong, setSongs } from "../store/actions/SongsPage/songsActions"
 import { setCouplets } from "../store/actions/SongsPage/coupletsActions"
+import { addError } from "../store/actions/errorActions"
 
 export enum pTypeEnum {
   get = 'get',
@@ -210,6 +211,7 @@ export class WSWrapper implements IWSWrapper {
     console.info(parcel)
 
     if (parcel.object === pObjEnum.error) {
+      store.dispatch(addError(parcel.data.error))
       return
     }
 

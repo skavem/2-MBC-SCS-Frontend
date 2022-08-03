@@ -10,6 +10,7 @@ import songsReducer from './slices/SongsPage/songsSlice';
 import coupletsReducer from './slices/SongsPage/coupletsSlice';
 import songFavsReducer from './slices/SongsPage/songFavsSlice';
 import coupletModalReducer from './slices/SongsPage/coupletModalSlice';
+import errorReducer from './slices/errorSlice';
 
 export interface ISOWRKSlice<T> {
   list: T[]
@@ -41,7 +42,8 @@ export const store = configureStore({
     coupletModal: coupletModalReducer,
     recv: recvReducer,
     websocket: webSocketReducer,
-    settings: settingsReducer
+    settings: settingsReducer,
+    errors: errorReducer
   },
 })
 

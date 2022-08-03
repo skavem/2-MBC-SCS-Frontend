@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Navbar from './components/navbar/Navbar'
+import NotificationContainer from './components/notifications/NotificationContainer'
 import { useAppSelector } from './hooks/redux'
 import BiblePage from './pages/BiblePage'
 import LoadingPage from './pages/LoadingPage'
@@ -17,7 +18,7 @@ function App() {
     <BrowserRouter>
       <div className='flex flex-col h-full'>
         <Navbar />
-        <div className='flex h-full'>
+        <div className='flex h-full relative'>
           {isConnected ?
             <Routes>
               <Route path='/' element={<BiblePage />} />
@@ -26,6 +27,7 @@ function App() {
             </Routes> :
             <LoadingPage />
           }
+          <NotificationContainer />
         </div>
       </div>
     </BrowserRouter>

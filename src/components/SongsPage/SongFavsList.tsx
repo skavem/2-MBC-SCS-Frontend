@@ -8,7 +8,7 @@ import {
   removeSongFav,
   setActivSongFav
 } from '../../store/actions/SongsPage/songFavsActions'
-import ItemsList from '../ItemsList'
+import ItemsList from '../item-list/ItemsList'
 
 const SongFavsList = ({ className = '' }: { className?: string }) => {
   const songs = useStoreItems(storeReducersEnum.songFavs)
