@@ -1,33 +1,34 @@
-import { useCallback, useMemo } from "react"
+import { useMemo } from "react";
 
-import { useAppDispatch, useAppSelector } from "./redux"
+import { useAppDispatch } from "./redux";
 
-import { WSSingletone } from "../websocket/wsSingletone"
-import { IhotKeys, useHotkeys } from "./useHotkeys"
-import { setNextCoupletActive, setPrevCoupletActive } from "../store/actions/SongsPage/coupletsActions"
+import {
+  setNextCoupletActive,
+  setPrevCoupletActive,
+} from "../store/actions/SongsPage/coupletsActions";
+import { IhotKeys, useHotkeys } from "./useHotkeys";
+import useShowHideItems from "./useShowHideItems";
+import { storeReducersEnum } from "../store";
+import { WSSingletone } from "../websocket/wsSingletone";
+import { ICouplet } from "../models";
 
 export const useCoupletsHotkeys = () => {
-  const dispatch = useAppDispatch()
-  const couplet = useAppSelector(state => state.couplets.active)
+  const dispatch = useAppDispatch();
+  const { showItem: showCouplet, hideItem: hideCouplet } = useShowHideItems(
+    (couplet) => WSSingletone.get().showCouplet(couplet as ICouplet),
+    WSSingletone.get().hideCouplet,
+    storeReducersEnum.couplets
+  );
 
-  const showCouplet = useCallback(
-    () => WSSingletone.get().showCouplet(couplet?.id!),
-    [couplet]
-  )
-
-  const hideCouplet = useCallback(
-    () => WSSingletone.get().hideCouplet(),
-    []
-  )
-
-  const hotKeys: IhotKeys = useMemo(() => (
-    {
+  const hotKeys: IhotKeys = useMemo(
+    () => ({
       ArrowDown: () => dispatch(setNextCoupletActive()),
       ArrowUp: () => dispatch(setPrevCoupletActive()),
       Enter: () => showCouplet(),
-      Escape: () => hideCouplet()
-    }
-  ), [dispatch, showCouplet, hideCouplet])
+      Escape: () => hideCouplet(),
+    }),
+    [dispatch, showCouplet, hideCouplet]
+  );
 
-  useHotkeys(hotKeys)
-}
+  useHotkeys(hotKeys);
+};

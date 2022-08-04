@@ -4,7 +4,7 @@ import { PencilIcon, PlusIcon, XIcon } from '@heroicons/react/solid'
 
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
 import useStoreItems from '../../../hooks/useStoreItems'
-import { IRCouplet } from '../../../models'
+import { IChapter, ICouplet, IRCouplet } from '../../../models'
 import { storeReducersEnum } from '../../../store'
 import { setActiveCouplet } from '../../../store/actions/SongsPage/coupletsActions'
 import { WSSingletone } from '../../../websocket/wsSingletone'
@@ -29,7 +29,7 @@ const CoupletsList = ({ className }: { className: string }) => {
         couplet => dispatch(setActiveCouplet(couplet as IRCouplet))
       }
       onDoubleItemClick={
-        couplet => WSSingletone.get().showCouplet(couplet.id as number)
+        couplet => WSSingletone.get().showCouplet(couplet as ICouplet)
       }
       isItemShown={couplet => couplet.id === shownCouplet?.id}
       listTopButton={

@@ -1,34 +1,34 @@
-import { useCallback, useMemo } from "react"
+import { useMemo } from "react";
 
-import { useAppDispatch, useAppSelector } from "./redux"
+import { useAppDispatch } from "./redux";
 
-import { IRVerse } from "../models"
-import { setNextVerseActive, setPrevVerseActive } from "../store/actions/BiblePage/versesActions"
-import { WSSingletone } from "../websocket/wsSingletone"
-import { IhotKeys, useHotkeys } from "./useHotkeys"
+import {
+  setNextVerseActive,
+  setPrevVerseActive,
+} from "../store/actions/BiblePage/versesActions";
+import { WSSingletone } from "../websocket/wsSingletone";
+import { IhotKeys, useHotkeys } from "./useHotkeys";
+import { IVerse } from "../models";
+import { storeReducersEnum } from "../store";
+import useShowHideItems from "./useShowHideItems";
 
 export const useVersesHotkeys = () => {
-  const dispatch = useAppDispatch()
-  const verse = useAppSelector(state => state.verses.active)
+  const dispatch = useAppDispatch();
+  const { showItem: showVerse, hideItem: hideVerse } = useShowHideItems(
+    (verse) => WSSingletone.get().showVerse(verse as IVerse),
+    WSSingletone.get().hideVerse,
+    storeReducersEnum.couplets
+  );
 
-  const showVerse = useCallback(
-    () => WSSingletone.get().showVerse(verse as IRVerse),
-    [verse]
-  )
-
-  const hideVerse = useCallback(
-    () => WSSingletone.get().hideVerse(),
-    []
-  )
-
-  const hotKeys: IhotKeys = useMemo(() => (
-    {
+  const hotKeys: IhotKeys = useMemo(
+    () => ({
       ArrowDown: () => dispatch(setNextVerseActive()),
       ArrowUp: () => dispatch(setPrevVerseActive()),
       Enter: () => showVerse(),
-      Escape: () => hideVerse()
-    }
-  ), [dispatch, showVerse, hideVerse])
+      Escape: () => hideVerse(),
+    }),
+    [dispatch, showVerse, hideVerse]
+  );
 
-  useHotkeys(hotKeys)
-}
+  useHotkeys(hotKeys);
+};

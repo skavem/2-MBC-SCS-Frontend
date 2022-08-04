@@ -11,7 +11,7 @@ const ShowHideCoupletButton = ({className=''}:{className?: string}) => {
     if (isShown) {
       WSSingletone.get().hideCouplet()
     } else {
-      WSSingletone.get().showCouplet(activeCouplet?.id!)
+      WSSingletone.get().showCouplet(activeCouplet!)
     }
   }
 
