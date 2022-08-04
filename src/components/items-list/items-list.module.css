@@ -1,0 +1,21 @@
+.ItemsList {
+  @apply border-2 rounded-lg border-gray-400 py-1 
+  overflow-y-scroll custom-scrollbar select-none;
+}
+
+.ItemsList-Item {
+  @apply relative py-1 px-3 cursor-pointer transition-all 
+  flex flex-row items-center hover:bg-gray-300;
+}
+
+.ItemsList-Item_active {
+  @apply bg-gray-500 hover:bg-gray-600 text-white
+}
+
+.ItemsList-Item-ShownIcon {
+  @apply h-5 mr-2 inline-flex items-baseline
+}
+
+.ItemList-Item-Mark {
+  @apply bg-teal-100 text-black rounded px-2 mr-2 font-medium
+}

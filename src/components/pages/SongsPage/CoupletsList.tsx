@@ -2,15 +2,15 @@ import React from 'react'
 
 import { PencilIcon, PlusIcon, XIcon } from '@heroicons/react/solid'
 
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import useStoreItems from '../../hooks/useStoreItems'
-import { IRCouplet } from '../../models'
-import { storeReducersEnum } from '../../store'
-import { setActiveCouplet } from '../../store/actions/SongsPage/coupletsActions'
-import { WSSingletone } from '../../websocket/wsSingletone'
-import ItemsList from '../item-list/ItemsList'
-import { setCoupletModalEdit, setCoupletModalFullName, setCoupletModalInsertAfter, setCoupletModalMark, setCoupletModalShown } from '../../store/actions/SongsPage/coupletModalActions'
-import { useCoupletsHotkeys } from '../../hooks/useCoupletsHotkeys'
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
+import useStoreItems from '../../../hooks/useStoreItems'
+import { IRCouplet } from '../../../models'
+import { storeReducersEnum } from '../../../store'
+import { setActiveCouplet } from '../../../store/actions/SongsPage/coupletsActions'
+import { WSSingletone } from '../../../websocket/wsSingletone'
+import ItemsList from '../../items-list/ItemsList'
+import { setCoupletModalEdit, setCoupletModalFullName, setCoupletModalInsertAfter, setCoupletModalMark, setCoupletModalShown } from '../../../store/actions/SongsPage/coupletModalActions'
+import { useCoupletsHotkeys } from '../../../hooks/useCoupletsHotkeys'
 
 const CoupletsList = ({ className }: { className: string }) => {
   const items = useStoreItems(storeReducersEnum.couplets)

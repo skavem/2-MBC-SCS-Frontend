@@ -1,0 +1,31 @@
+.SettingsButton {
+  @apply flex mr-2 p-2 border-2 hover:border-white 
+  border-transparent rounded-lg transition-colors hover:bg-gray-700
+}
+
+.SettingsModal-InputGroup {
+  @apply p-2 w-full flex
+}
+
+.SettingsModal-InputGroup-Label {
+  @apply flex items-center px-4 border-2 border-gray-300 
+  rounded-lg rounded-r-none
+}
+
+.SettingsModal-InputGroup-Input {
+  @apply p-2 border-2 border-gray-300 rounded-lg border-l-0 
+  rounded-l-none w-full
+}
+
+.SettingsModal-Button {
+  @apply rounded-lg p-2 text-white cursor-pointer 
+  transition-colors mr-2
+}
+
+.SettingsModal-Button_teal {
+  @apply bg-teal-500 hover:bg-teal-700
+}
+
+.SettingsModal-Button_gray {
+  @apply bg-gray-500 hover:bg-gray-700
+}

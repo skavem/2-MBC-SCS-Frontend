@@ -1,14 +1,14 @@
 import { XIcon } from '@heroicons/react/solid'
 import React from 'react'
-import { useAppDispatch } from '../../hooks/redux'
-import useStoreItems from '../../hooks/useStoreItems'
-import { IRFavSong, } from '../../models'
-import { storeReducersEnum } from '../../store'
+import { useAppDispatch } from '../../../hooks/redux'
+import useStoreItems from '../../../hooks/useStoreItems'
+import { IRFavSong, } from '../../../models'
+import { storeReducersEnum } from '../../../store'
 import {
   removeSongFav,
   setActivSongFav
-} from '../../store/actions/SongsPage/songFavsActions'
-import ItemsList from '../item-list/ItemsList'
+} from '../../../store/actions/SongsPage/songFavsActions'
+import ItemsList from '../../items-list/ItemsList'
 
 const SongFavsList = ({ className = '' }: { className?: string }) => {
   const songs = useStoreItems(storeReducersEnum.songFavs)

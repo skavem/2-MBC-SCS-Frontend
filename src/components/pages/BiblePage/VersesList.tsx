@@ -1,13 +1,13 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import useStoreItems from '../../hooks/useStoreItems'
-import { useVersesHotkeys } from '../../hooks/useVersesHotkeys'
-import { IRVerse, ISObjectWRKey } from '../../models'
-import { store, storeReducersEnum } from '../../store'
-import { setActiveVerse } from '../../store/actions/BiblePage/versesActions'
-import { addToHistory } from '../../store/actions/BiblePage/versesSHActions'
-import { WSSingletone } from '../../websocket/wsSingletone'
-import ItemsList from '../item-list/ItemsList'
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
+import useStoreItems from '../../../hooks/useStoreItems'
+import { useVersesHotkeys } from '../../../hooks/useVersesHotkeys'
+import { IRVerse, ISObjectWRKey } from '../../../models'
+import { store, storeReducersEnum } from '../../../store'
+import { setActiveVerse } from '../../../store/actions/BiblePage/versesActions'
+import { addToHistory } from '../../../store/actions/BiblePage/versesSHActions'
+import { WSSingletone } from '../../../websocket/wsSingletone'
+import ItemsList from '../../items-list/ItemsList'
 
 const VersesList = ({ className }: { className: string }) => {
   const verses = useStoreItems(storeReducersEnum.verses)

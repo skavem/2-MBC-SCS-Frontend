@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { addToHistory } from '../../store/actions/BiblePage/versesSHActions'
-import { WSSingletone } from '../../websocket/wsSingletone'
-import ShowHideButton from '../ShowHideButton'
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
+import { addToHistory } from '../../../store/actions/BiblePage/versesSHActions'
+import { WSSingletone } from '../../../websocket/wsSingletone'
+import ShowHideButton from '../../ShowHideButton'
 
 const ShowHideVerseButton = ({ className = '' }: { className?: string }) => {
   const isShown = useAppSelector(state => state.recv.verse) !== null

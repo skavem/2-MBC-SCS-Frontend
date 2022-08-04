@@ -1,12 +1,12 @@
 import { StarIcon } from '@heroicons/react/solid'
 import React from 'react'
-import { useAppDispatch } from '../../hooks/redux'
-import useStoreItems from '../../hooks/useStoreItems'
-import { IRSong } from '../../models'
-import { storeReducersEnum } from '../../store'
-import { addSongFav } from '../../store/actions/SongsPage/songFavsActions'
-import { setActiveSong } from '../../store/actions/SongsPage/songsActions'
-import ItemsList from '../item-list/ItemsList'
+import { useAppDispatch } from '../../../hooks/redux'
+import useStoreItems from '../../../hooks/useStoreItems'
+import { IRSong } from '../../../models'
+import { storeReducersEnum } from '../../../store'
+import { addSongFav } from '../../../store/actions/SongsPage/songFavsActions'
+import { setActiveSong } from '../../../store/actions/SongsPage/songsActions'
+import ItemsList from '../../items-list/ItemsList'
 
 const SongsList = ({ className = '' }: { className?: string }) => {
   const items = useStoreItems(storeReducersEnum.songs)

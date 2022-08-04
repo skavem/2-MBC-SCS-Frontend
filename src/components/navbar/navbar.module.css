@@ -1,0 +1,25 @@
+.Navbar {
+  @apply flex flex-row justify-center items-center 
+  bg-gray-500 text-white
+}
+
+.Navbar-Logo-Text {
+  @apply ml-4 mr-4 font-bold text-xl
+}
+
+.Navbar-Pages {
+  @apply flex grow justify-center
+}
+
+.Navbar-Pages-PageLink {
+  @apply flex p-3 m-1 transition-colors rounded-lg 
+  border-transparent border-2
+}
+
+.Navbar-Pages-PageLink_active {
+  @apply border-white bg-gray-600
+}
+
+.Navbar-Pages-PageLink_inactive {
+  @apply hover:border-white hover:bg-gray-600
+}

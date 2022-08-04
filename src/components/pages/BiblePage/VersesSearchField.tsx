@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { useAppDispatch } from '../../hooks/redux'
-import { flipToHistory } from '../../store/actions/BiblePage/versesSHActions'
-import { WSSingletone } from '../../websocket/wsSingletone'
-import SearchField from '../SearchField'
+import { useAppDispatch } from '../../../hooks/redux'
+import { flipToHistory } from '../../../store/actions/BiblePage/versesSHActions'
+import { WSSingletone } from '../../../websocket/wsSingletone'
+import SearchField from '../../search-field/SearchField'
 
 const VersesSearchField = ({ className = '' }: { className?: string }) => {
   const dispatch = useAppDispatch()

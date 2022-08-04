@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
-import { useInput } from "../../hooks/useInput";
-import { WSSingletone } from "../../websocket/wsSingletone";
-import Modal from "../Modal";
+import { useInput } from "../../../hooks/useInput";
+import { WSSingletone } from "../../../websocket/wsSingletone";
+import Modal from "../../modal/Modal";
 
 const AddSongModal = ({
   shown = false,

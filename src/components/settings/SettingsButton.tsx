@@ -1,10 +1,10 @@
 import React from 'react'
+import styles from './settings.module.css'
 
 const SettingsButton = ({onClick}: {onClick: () => void}) => {
   return (
     <button
-      className='flex mr-2 p-2 border-2 hover:border-white 
-        border-transparent rounded-lg transition-colors hover:bg-gray-700'
+      className={styles.SettingsButton}
       onClick={onClick}
     >
       <svg className='w-6' viewBox="0 0 24 24">

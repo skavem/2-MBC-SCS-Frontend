@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux'
 import {
   clearCoupletModal,
   setCoupletModalFullName,
   setCoupletModalMark
-} from '../../store/actions/SongsPage/coupletModalActions'
-import { WSSingletone } from '../../websocket/wsSingletone'
-import Modal from '../Modal'
+} from '../../../store/actions/SongsPage/coupletModalActions'
+import { WSSingletone } from '../../../websocket/wsSingletone'
+import Modal from '../../modal/Modal'
 
 const CoupletModal = () => {
   const dispatch = useAppDispatch()

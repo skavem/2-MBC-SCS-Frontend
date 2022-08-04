@@ -1,73 +1,69 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect } from "react";
 
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { useAppDispatch } from '../../hooks/redux'
-import { settingsSlice } from '../../store/slices/settingsSlice'
-import appPages from '../../variables/pages'
-import SettingsButton from './SettingsButton'
-import SettingsModal from './SettingsModal'
+import { useAppDispatch } from "../../hooks/redux";
+import { settingsSlice } from "../../store/slices/settingsSlice";
+import appPages from "../../variables/pages";
+import SettingsButton from "../settings/SettingsButton";
+import SettingsModal from "../settings/SettingsModal";
+import styles from "./navbar.module.css";
+import concatClasses from "../../utils/concatClasses";
 
 const Navbar = () => {
-  const curLoc = useLocation()
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
+  const curLoc = useLocation();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const keyHandler = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Tab') {
-      e.preventDefault()
-      const curPageInd = appPages.findIndex(
-        page => page.path === curLoc.pathname
-      )
-      const nextPageInd = curPageInd + 1 < appPages.length ?
-        curPageInd + 1 :
-        0
-      navigate(appPages[nextPageInd].path)
-    }
-  }, [curLoc, navigate])
+  const keyHandler = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const curPageInd = appPages.findIndex(
+          (page) => page.path === curLoc.pathname
+        );
+        const nextPageInd =
+          curPageInd + 1 < appPages.length ? curPageInd + 1 : 0;
+        navigate(appPages[nextPageInd].path);
+      }
+    },
+    [curLoc, navigate]
+  );
 
   useEffect(() => {
-    document.addEventListener('keyup', keyHandler)
+    document.addEventListener("keyup", keyHandler);
 
     return () => {
-      document.removeEventListener('keyup', keyHandler)
-    }
-  }, [keyHandler])
+      document.removeEventListener("keyup", keyHandler);
+    };
+  }, [keyHandler]);
 
   return (
-    <nav
-      className='flex row justify-center 
-      items-center bg-gray-500 text-white'
-    >
-      <h1
-        className='ml-4 mr-4 font-bold text-xl'
-      >
-        SC Studio
-      </h1>
-      <div className="flex grow justify-center">
-        {appPages.map(page => (
+    <nav className={styles.Navbar}>
+      <h1 className={styles["Navbar-Logo-Text"]}>SC Studio</h1>
+      <div className={styles["Navbar-Pages"]}>
+        {appPages.map((page) => {
+          const isActive = curLoc.pathname === page.path ||
+          (page.default && curLoc.pathname === "/")
+          return (
           <Link
             to={page.path}
             key={page.name}
-            className={
-              'flex p-3 m-1 transition-colors rounded-lg '
-              + 'border-transparent border-2 '
-              + ((curLoc.pathname === page.path) ||
-                (page.default && (curLoc.pathname === '/')) ?
-                'border-white bg-gray-600' :
-                'hover:border-white hover:bg-gray-600')
-            }
+            className={concatClasses(
+              styles["Navbar-Pages-PageLink"],
+              styles['Navbar-Pages-PageLink_' + (isActive ? 'active' : 'inactive')]
+            )}
           >
             {page.name}
           </Link>
-        ))}
+        )})}
       </div>
       <SettingsButton
         onClick={() => dispatch(settingsSlice.actions.setModalShown(true))}
       />
       <SettingsModal />
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
