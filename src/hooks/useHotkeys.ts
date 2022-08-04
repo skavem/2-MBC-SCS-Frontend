@@ -13,8 +13,8 @@ export const useHotkeys = (hotKeys: IhotKeys) => {
   }, [hotKeys])
 
   useEffect(() => {
-    document.addEventListener('keyup', keyHandler)
+    window.addEventListener('keydown', keyHandler)
 
-    return () => document.removeEventListener('keyup', keyHandler)
+    return () => window.removeEventListener('keydown', keyHandler)
   }, [keyHandler])
 }

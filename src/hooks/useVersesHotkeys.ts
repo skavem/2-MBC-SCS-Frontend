@@ -17,7 +17,7 @@ export const useVersesHotkeys = () => {
   const { showItem: showVerse, hideItem: hideVerse } = useShowHideItems(
     (verse) => WSSingletone.get().showVerse(verse as IVerse),
     WSSingletone.get().hideVerse,
-    storeReducersEnum.couplets
+    storeReducersEnum.verses
   );
 
   const hotKeys: IhotKeys = useMemo(
