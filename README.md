@@ -3,7 +3,8 @@ TS, React (Router), Redux (RTK), WebSocket, Tailwind
 
 # Что?
 Фронт на Реакте для демонстрации Библии и песен в ОБС через web-документ.
-Бэк лежит в [соседнем репо](https://github.com/skavem/2-MBC-SCS-Backend)
+Бэк лежит в [соседнем репо](https://github.com/skavem/2-MBC-SCS-Backend).
+Страница для OBS также лежит [неподалёку](https://github.com/skavem/2-MBC-SCS-Recv).
 
 # Зачем?
 Приложение на React красивое и удобное, позволяет легко расширять и создавать собственную логику.
