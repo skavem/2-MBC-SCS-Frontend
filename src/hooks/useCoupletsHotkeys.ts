@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { useAppDispatch } from "./redux";
+import { useAppDispatch, useAppSelector } from "./redux";
 
 import {
   setNextCoupletActive,
@@ -13,6 +13,7 @@ import { WSSingletone } from "../websocket/wsSingletone";
 import { ICouplet } from "../models";
 
 export const useCoupletsHotkeys = () => {
+  const isModalShown = useAppSelector(state => state.coupletModal.modalShown)
   const dispatch = useAppDispatch();
   const { showItem: showCouplet, hideItem: hideCouplet } = useShowHideItems(
     (couplet) => WSSingletone.get().showCouplet(couplet as ICouplet),
@@ -30,5 +31,5 @@ export const useCoupletsHotkeys = () => {
     [dispatch, showCouplet, hideCouplet]
   );
 
-  useHotkeys(hotKeys);
+  useHotkeys(hotKeys, isModalShown);
 };

@@ -53,11 +53,9 @@ const VersesSHList = ({ className = '' }: { className?: string }) => {
             onClick: item => dispatch(
               removeFromHistory(item as IRSearchVerse)
             ),
-            className: `ml-auto invisible group-hover:visible p-1
-            hover:bg-gray-700 rounded-md hover:text-white 
-            border-2 border-gray-500 hover:border-transparent 
-            text-gray-500`,
-            children: <XIcon className='h-4' />
+            className: 'ml-auto invisible group-hover:visible p-1 '+
+            'hover:bg-gray-700 rounded-md hover:text-white text-gray-500',
+            children: <XIcon className='h-5' />
           }
         ]
       }

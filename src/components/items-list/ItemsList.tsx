@@ -23,7 +23,7 @@ interface IItemsListProps {
 
 const ItemsList = ({
   className,
-  itemClassName = '',
+  itemClassName = "",
   items,
   activeItem,
   isItemShown = (a) => false,
@@ -68,7 +68,7 @@ const ItemsList = ({
             key={item.reactKey}
           >
             {rightButtons?.map((button) => (
-              <ItemButton
+              <Item.Button
                 name={button.name}
                 onClick={() => button.onClick(item)}
                 className={`${button.className} ${
@@ -77,7 +77,7 @@ const ItemsList = ({
                 key={`${item.reactKey}-${button.name as string}`}
               >
                 {button.children}
-              </ItemButton>
+              </Item.Button>
             ))}
             {bottomButtons?.map((button) => (
               <Item.Button
