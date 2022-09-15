@@ -19,11 +19,11 @@ const Modal = ({ onClose, name, shown, children }: IModal) => {
           ? styles.ModalBackground_visible
           : styles.ModalBackground_invisible
       )}
-      onClick={onClose}
+      onMouseDown={onClose}
     >
       <div
         className={styles["ModalBackground-Window"]}
-        onClick={(e) => e.stopPropagation()}
+        onMouseDown={e => e.stopPropagation()}
       >
         <div className={styles["ModalBackground-Window-Header"]}>
           <p className={styles["ModalBackground-Window-Header-Namefield"]}>
