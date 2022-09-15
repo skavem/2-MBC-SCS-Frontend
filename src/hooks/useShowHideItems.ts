@@ -1,10 +1,10 @@
 import { useCallback } from "react";
-import { ISObject } from "../models";
+import { ISObjectWRKey } from "../models";
 import { storeReducersEnum } from "../store";
 import { useAppSelector } from "./redux";
 
 export const useShowHideItems = (
-  showFunc: (item: ISObject) => void,
+  showFunc: (item: ISObjectWRKey) => void,
   hideFunc: () => void,
   store: storeReducersEnum,
 ) => {

@@ -16,7 +16,7 @@ export const songFavsSlice = createSlice({
   initialState,
   reducers: {
     addSongFav(state, action: PayloadAction<IRFavSong>) {
-      state.list.unshift(action.payload)
+      state.list.push(action.payload)
       window.localStorage.setItem(storageName, JSON.stringify(state.list))
     },
     setActiveSongFav(state, action: PayloadAction<IRFavSong>) {
