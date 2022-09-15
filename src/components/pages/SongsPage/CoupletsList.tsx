@@ -86,8 +86,7 @@ const CoupletsList = ({ className }: { className: string }) => {
             dispatch(setCoupletModalInsertAfter(item.id as number));
             dispatch(setCoupletModalShown(true));
           },
-          className: `flex justify-center fixed absolute 
-          inset-x-0 bottom-0 -bottom-3 z-60`,
+          className: ``,
           children: (
             <PlusIcon
               className={`p-1 h-6 text-gray-500 rounded-full invisible 

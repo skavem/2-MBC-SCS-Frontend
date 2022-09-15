@@ -78,18 +78,18 @@ const ItemsList = ({
                 {button.children}
               </Item.Button>
             ))}
-            {bottomButtons?.map((button) => (
-              <Item.Button
-                name={button.name}
-                onClick={() => button.onClick(item)}
-                className={`${button.className} ${
-                  isActive ? button.activeClassName : button.nonActiveClassName
-                }`}
-                key={`${item.reactKey}-${button.name as string}`}
-              >
-                {button.children}
-              </Item.Button>
-            ))}
+            <div className={styles['ItemList-Item-BottomButtons']}>
+              {bottomButtons?.map((button) => (
+                <Item.Button
+                  name={button.name}
+                  onClick={() => button.onClick(item)}
+                  className={concatClasses(button.className!)}
+                  key={`${item.reactKey}-${button.name as string}`}
+                >
+                  {button.children}
+                </Item.Button>
+              ))}
+            </div>
           </Item>
         );
       })}

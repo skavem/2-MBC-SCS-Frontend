@@ -1,7 +1,7 @@
 const concatClasses = (...args: (string|boolean)[]) => {
   const classes = args.reduce((retVal, classes) => {
     if (typeof classes === 'boolean') return retVal
-    return retVal + ' ' + classes.trim()
+    return retVal + ' ' + classes.replaceAll(/[\n ]+/g, ' ').trim()
   }, '')
 
   return classes as string

@@ -19,3 +19,7 @@
 .ItemList-Item-Mark {
   @apply bg-teal-100 text-black rounded px-2 mr-2 font-medium
 }
+
+.ItemList-Item-BottomButtons { 
+  @apply flex justify-center absolute inset-x-0 -bottom-3 z-10
+}
