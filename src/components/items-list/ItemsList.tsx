@@ -5,7 +5,6 @@ import { IItemButton, IListButton } from "../../models/ui";
 import concatClasses from "../../utils/concatClasses";
 import isScrollNeeded from "../../utils/isScrollNeeded";
 import Item from "./Item";
-import ItemButton from "./ItemButton";
 import styles from "./items-list.module.css";
 
 interface IItemsListProps {

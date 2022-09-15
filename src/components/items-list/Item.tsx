@@ -39,7 +39,9 @@ const Item = ({
       )}
     >
       {isShown(item) && (
-        <EyeIcon className={styles['ItemsList-Item-ShownIcon']} />
+        <div>
+          <EyeIcon className={styles['ItemsList-Item-ShownIcon']} />
+        </div>
       )}
       <div>
         {item.mark && (
