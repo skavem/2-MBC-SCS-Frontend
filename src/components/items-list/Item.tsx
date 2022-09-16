@@ -39,11 +39,9 @@ const Item = ({
       )}
     >
       {isShown(item) && (
-        <div>
           <EyeIcon className={styles['ItemsList-Item-ShownIcon']} />
-        </div>
       )}
-      <div>
+      <span>
         {item.mark && (
           <span
             className={styles['ItemList-Item-Mark']}
@@ -52,7 +50,7 @@ const Item = ({
           </span>
         )}
         <span>{item.fullName}</span>
-      </div>
+      </span>
 
       {children}
     </div>

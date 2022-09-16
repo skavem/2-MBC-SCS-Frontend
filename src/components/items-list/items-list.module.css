@@ -5,11 +5,19 @@
 
 .ItemsList-Item {
   @apply relative py-1 px-3 cursor-pointer transition-all 
-  flex flex-row items-center hover:bg-gray-300;
+  flex flex-row items-center;
+}
+
+.ItemsList-Item:hover {
+  @apply bg-gray-300
 }
 
 .ItemsList-Item_active {
-  @apply bg-gray-500 hover:bg-gray-600 text-white
+  @apply bg-gray-500 text-white
+}
+
+.ItemsList-Item_active:hover {
+  @apply bg-gray-600
 }
 
 .ItemsList-Item-ShownIcon {
@@ -22,4 +30,8 @@
 
 .ItemList-Item-BottomButtons { 
   @apply flex justify-center absolute inset-x-0 -bottom-3 z-10
+}
+
+.ItemsList-Item-RightButtons {
+  @apply flex ml-auto
 }

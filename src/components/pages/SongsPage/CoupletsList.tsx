@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PencilIcon, PlusIcon, XIcon } from "@heroicons/react/solid";
+import { ClipboardIcon, PencilIcon, PlusIcon, XIcon } from "@heroicons/react/solid";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import useStoreItems from "../../../hooks/useStoreItems";
@@ -17,6 +17,7 @@ import {
   setCoupletModalShown,
 } from "../../../store/actions/SongsPage/coupletModalActions";
 import { useCoupletsHotkeys } from "../../../hooks/useCoupletsHotkeys";
+import styles from './CoupletsList.module.css'
 
 const CoupletsList = ({ className }: { className: string }) => {
   const items = useStoreItems(storeReducersEnum.couplets);
@@ -29,7 +30,7 @@ const CoupletsList = ({ className }: { className: string }) => {
   return (
     <ItemsList
       className={className}
-      itemClassName={"hover:pb-3 hover:mb-3"}
+      itemClassName={styles['CoupletsList-Item']}
       {...items}
       onItemClick={(couplet) =>
         dispatch(setActiveCouplet(couplet as IRCouplet))
@@ -46,11 +47,19 @@ const CoupletsList = ({ className }: { className: string }) => {
           dispatch(setCoupletModalInsertAfter(-1));
           dispatch(setCoupletModalShown(true));
         },
-        className: `flex justify-center rounded-full p-1 mx-2 mb-1 
-          transition-all hover:bg-gray-300 text-gray-700 cursor-pointer`,
+        className: styles['CoupletsList-TopButton'],
         children: <PlusIcon className="h-5" />,
       }}
       rightButtons={[
+        {
+          name: "copy",
+          onClick(item) {
+            navigator.clipboard.writeText(item.fullName)
+          },
+          className: styles['CoupletsList-Item-RightButton'],
+          activeClassName: styles['CoupletsList-Item-RightButton_active'],
+          children: <ClipboardIcon className="h-5" />,
+        },
         {
           name: "edit",
           onClick(item) {
@@ -59,11 +68,8 @@ const CoupletsList = ({ className }: { className: string }) => {
             dispatch(setCoupletModalEdit(item as IRCouplet));
             dispatch(setCoupletModalShown(true));
           },
-          className: `ml-auto invisible rounded-md group-hover:visible p-1
-          transition-all`,
-          activeClassName: `text-white hover:bg-white hover:text-gray-700`,
-          nonActiveClassName: `hover:bg-gray-500 hover:text-white 
-          text-gray-700`,
+          className: styles['CoupletsList-Item-RightButton'],
+          activeClassName: styles['CoupletsList-Item-RightButton_active'],
           children: <PencilIcon className="h-5" />,
         },
         {
@@ -71,11 +77,8 @@ const CoupletsList = ({ className }: { className: string }) => {
           onClick(item) {
             WSSingletone.get().deleteCouplet(item.id as number);
           },
-          className: `invisible rounded-md group-hover:visible p-1
-          transition-all`,
-          activeClassName: `text-white hover:bg-white hover:text-gray-700`,
-          nonActiveClassName: `hover:bg-gray-500 hover:text-white 
-          text-gray-700`,
+          className: styles['CoupletsList-Item-RightButton'],
+          activeClassName: styles['CoupletsList-Item-RightButton_active'],
           children: <XIcon className="h-5" />,
         },
       ]}
@@ -86,12 +89,9 @@ const CoupletsList = ({ className }: { className: string }) => {
             dispatch(setCoupletModalInsertAfter(item.id as number));
             dispatch(setCoupletModalShown(true));
           },
-          className: ``,
           children: (
             <PlusIcon
-              className={`p-1 h-6 text-gray-500 rounded-full invisible 
-            shadow-gray-500 shadow-md bg-white group-hover:visible
-            transition-colors hover:bg-gray-500 hover:text-white`}
+              className={styles['CoupletsList-Item-BottomButton']}
             />
           ),
         },

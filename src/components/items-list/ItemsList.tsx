@@ -66,19 +66,22 @@ const ItemsList = ({
             onDoubleClick={onDoubleItemClick}
             key={item.reactKey}
           >
-            {rightButtons?.map((button) => (
-              <Item.Button
-                name={button.name}
-                onClick={() => button.onClick(item)}
-                className={`${button.className} ${
-                  isActive ? button.activeClassName : button.nonActiveClassName
-                }`}
-                key={`${item.reactKey}-${button.name as string}`}
-              >
-                {button.children}
-              </Item.Button>
-            ))}
-            <div className={styles['ItemList-Item-BottomButtons']}>
+            <div className={styles['ItemsList-Item-RightButtons']}>
+              {rightButtons?.map((button) => (
+                <Item.Button
+                  name={button.name}
+                  onClick={() => button.onClick(item)}
+                  className={concatClasses(
+                    button.className,
+                    (isActive ? button.activeClassName : button.nonActiveClassName)
+                  )}
+                  key={`${item.reactKey}-${button.name as string}`}
+                >
+                  {button.children}
+                </Item.Button>
+              ))}
+            </div>
+            <span className={styles['ItemList-Item-BottomButtons']}>
               {bottomButtons?.map((button) => (
                 <Item.Button
                   name={button.name}
@@ -89,7 +92,7 @@ const ItemsList = ({
                   {button.children}
                 </Item.Button>
               ))}
-            </div>
+            </span>
           </Item>
         );
       })}

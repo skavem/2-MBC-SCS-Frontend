@@ -1,0 +1,50 @@
+.CoupletsList-Item {
+  @apply hover:pb-3 hover:mb-3
+}
+
+.CoupletsList-TopButton {
+  @apply flex justify-center rounded-full p-1 mx-2 mb-1 
+  transition-all text-gray-700 cursor-pointer
+}
+
+.CoupletsList-TopButton:hover {
+  @apply bg-gray-300
+}
+
+.CoupletsList-Item-RightButton {
+  @apply invisible rounded-md p-1 transition-all text-gray-700
+  inline-block
+}
+
+.CoupletsList-Item-RightButton:hover {
+  @apply bg-gray-500 text-white 
+}
+
+.CoupletsList-Item-RightButton:not(:last-child) {
+  @apply mr-1
+}
+
+.CoupletsList-Item:hover .CoupletsList-Item-RightButton {
+  @apply visible
+}
+
+.CoupletsList-Item-RightButton_active {
+  @apply text-white
+}
+
+.CoupletsList-Item-RightButton_active:hover {
+  @apply bg-white text-gray-700
+}
+
+.CoupletsList-Item-BottomButton {
+  @apply p-1 h-6 text-gray-500 rounded-full invisible 
+  shadow-gray-500 shadow-md bg-white transition-colors
+}
+
+.CoupletsList-Item-BottomButton:hover {
+  @apply bg-gray-500 text-white
+}
+
+.CoupletsList-Item:hover .CoupletsList-Item-BottomButton {
+  @apply visible
+}
