@@ -18,6 +18,7 @@ import {
 } from "../../../store/actions/SongsPage/coupletModalActions";
 import { useCoupletsHotkeys } from "../../../hooks/useCoupletsHotkeys";
 import styles from './CoupletsList.module.css'
+import copyToClipboard from "../../../utils/copyToClipboardPolyfill";
 
 const CoupletsList = ({ className }: { className: string }) => {
   const items = useStoreItems(storeReducersEnum.couplets);
@@ -54,7 +55,7 @@ const CoupletsList = ({ className }: { className: string }) => {
         {
           name: "copy",
           onClick(item) {
-            navigator.clipboard.writeText(item.fullName)
+            copyToClipboard(item.fullName)
           },
           className: styles['CoupletsList-Item-RightButton'],
           activeClassName: styles['CoupletsList-Item-RightButton_active'],
