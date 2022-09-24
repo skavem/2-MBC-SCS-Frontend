@@ -3,6 +3,10 @@
   overflow-y-scroll custom-scrollbar select-none;
 }
 
+.ItemsList-LoadingContainer {
+  @apply flex w-full h-full justify-center items-center
+}
+
 .ItemsList-Item {
   @apply relative py-1 px-3 cursor-pointer transition-all 
   flex flex-row items-center;
