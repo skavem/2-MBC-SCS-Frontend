@@ -1,5 +1,5 @@
 .ModalBackground {
-  @apply fixed z-10 left-0 top-0 w-full h-full bg-gray-700 
+  @apply fixed z-20 left-0 top-0 w-full h-full bg-gray-700 
   bg-opacity-70 flex items-center justify-center transition-all;
 }
 

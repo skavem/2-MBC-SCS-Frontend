@@ -18,7 +18,7 @@ function App() {
     <BrowserRouter>
       <div className='flex flex-col h-full'>
         <Navbar />
-        <div className='flex h-full relative'>
+        <div className='flex h-[97%] relative'>
           {isConnected ?
             <Routes>
               <Route path='/' element={<BiblePage />} />

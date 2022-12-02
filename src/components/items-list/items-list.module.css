@@ -1,6 +1,6 @@
 .ItemsList {
   @apply border-2 rounded-lg border-gray-400 py-1 
-  overflow-y-scroll custom-scrollbar select-none;
+  overflow-y-scroll custom-scrollbar select-none
 }
 
 .ItemsList-LoadingContainer {
@@ -9,7 +9,7 @@
 
 .ItemsList-Item {
   @apply relative py-1 px-3 cursor-pointer transition-all 
-  flex flex-row items-center;
+  flex flex-row items-center
 }
 
 .ItemsList-Item:hover {
@@ -25,7 +25,7 @@
 }
 
 .ItemsList-Item-ShownIcon {
-  @apply h-[20px] w-[20px] mr-2 items-baseline
+  @apply min-w-[20px] w-[20px] mr-2
 }
 
 .ItemList-Item-Mark {
